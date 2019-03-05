@@ -17,10 +17,12 @@ class TaskFixture extends BaseFixture implements DependentFixtureInterface
             $task
                 ->setLabel($this->faker->sentence(rand(2, 10)))
                 ->setStartAt($startAt)
-                ->setEndAt($startAt->modify("+" . rand(0, 8) . " hours"))
                 ->setDone(0)
                 ->setEmployee($this->getRandomReference("Employee"))
                 ->setCreatedBy($this->getRandomReference("User"));
+            $newDateTime = new \DateTime($startAt->format("Y-m-d H:i:s"));
+            $newDateTime->modify("+" . rand(1, 8) . " hours");
+            $task->setEndAt($newDateTime); // Séparé du reste à cause du ->modify qui ne retourne pas l'objet, mais le modifie directement
             return $task;
         });
 

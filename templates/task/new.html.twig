@@ -3,7 +3,8 @@
     <div class="form-container w-50 p-4 rounded">
         {{ form_start(form) }}
         {{ form_row(form._token) }} <!-- CSRF -->
-        <div class="form-group">
+        {% if moreError is not empty %}<span class="alert alert-danger">{{ moreError }}</span>{% endif %}
+        <div class="form-group mt-4">
             {{ form_widget(form.label) }}
         </div>
         <div class="form-group">
