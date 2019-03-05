@@ -1,0 +1,41 @@
+<div class="d-flex flex-row justify-content-center pt-4">
+    <div class="d-flex flex-column align-items-center">
+
+        <h1 class="align-self-start">Task index</h1>
+
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Libellé</th>
+                    <th>Employé</th>
+                    <th>Début</th>
+                    <th>Fin</th>
+                    <th>Terminé</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for task in tasks %}
+                <tr onclick="location.href='{{ path('admin_edit', {id: task.id}) }}'" style="background-color: {{ task.employee.color }}">
+
+                    <td>{{ task.label }}</td>
+                    <td>{{ task.employee.email }}</td>
+                    <td>{{ task.startAt ? task.startAt|localizeddate("medium", "short", "fr_FR") : '' }}</td>
+                    <td>{{ task.endAt ? task.endAt|localizeddate("medium", "short", "fr_FR") : '' }}</td>
+                    <td>
+                        <span class="badge {{ task.done ? 'badge-success' : 'badge-danger' }}">
+                            {{ task.done ? 'Terminé' : 'En attente' }}
+                        </span>
+                    </td>
+                </tr>
+            {% else %}
+                <tr>
+                    <td colspan="6">no records found</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+
+        <a href="{{ path('admin_create') }}" class="btn btn-success align-self-start">Create new</a>
+
+    </div>
+</div>

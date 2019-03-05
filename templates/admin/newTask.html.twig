@@ -1,0 +1,18 @@
+{% extends "base.html.twig" %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('styles/jquery.datetimepicker.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('styles/chosen.css') }}">
+{% endblock %}
+
+{% block body %}
+    {{ include("task/new.html.twig") }}
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent () }}
+    <script src="{{ asset('js/jquery.datetimepicker.full.min.js') }}"></script>
+    <script src="{{ asset('js/adminCreate.js') }}"></script>
+    <script src="{{ asset('js/chosen.jquery.js') }}"></script>
+{% endblock %}

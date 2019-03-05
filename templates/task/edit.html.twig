@@ -1,0 +1,61 @@
+
+
+<div class="d-flex flex-column align-items-center">
+
+    <h1>Edition de la tâche {{ task.id }}</h1>
+
+    <div class="form-container w-50 p-4 rounded">
+        {{ form_start(form) }}
+        {{ form_row(form._token) }}
+
+        <div class="form-group">
+            {{ form_widget(form.label) }}
+        </div>
+        <div class="form-group">
+            <!-- Pour start_at et end_at ce format est utilisé pour transformer les datetime en string -->
+            <div class="input-group">
+                <input type="text"
+                       class="form-control datetimePicker"
+                       name="{{ form.start_at.vars.name }}"
+                       value="{{ form.start_at.vars.value | date("Y/m/d H:i") }}"
+                       placeholder="{{ form.start_at.vars.attr.placeholder ?? "" }}"
+                />
+                <div class="input-group-append">
+                    <span class="input-group-text" id="basic-addon1">
+                        <img width="16" height="16" src="{{ asset('images/_ionicons_svg_md-calendar.svg') }}"/>
+                    </span>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="input-group">
+                <input type="text"
+                       class="form-control datetimePicker"
+                       name="{{ form.end_at.vars.name }}"
+                       value="{{ form.end_at.vars.value | date("Y/m/d H:i") }}"
+                       placeholder="{{ form.end_at.vars.attr.placeholder ?? "" }}"
+                />
+                <div class="input-group-append">
+                    <span class="input-group-text" id="basic-addon1">
+                        <img width="16" height="16" src="{{ asset('images/_ionicons_svg_md-calendar.svg') }}"/>
+                    </span>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            {{ form_row(form.employee) }}
+        </div>
+        <div class="form-group">
+            {{ form_row(form.created_by) }}
+        </div>
+
+        <button class="btn btn-success">{{ button_label|default('Save') }}</button>
+
+        {{ form_end(form, { "render_rest": false }) }}
+    </div>
+
+    <a href="{{ path('admin_list') }}">back to list</a>
+    {{ include('task/_delete_form.html.twig') }}
+</div>
+
+
