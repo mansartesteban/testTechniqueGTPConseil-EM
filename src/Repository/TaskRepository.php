@@ -28,10 +28,10 @@ class TaskRepository extends ServiceEntityRepository
             AND t.end_at >= :end
             OR t.start_at >= :start
             AND t.end_at <= :end
-            OR t.start_at <= :end
+            OR t.start_at < :end
             AND t.end_at >= :end
             OR t.start_at <= :start
-            AND t.end_at >= :start)")
+            AND t.end_at > :start)")
             ->setParameters([
                 "start" => $newTask->getStartAt(),
                 "end" => $newTask->getEndAt(),

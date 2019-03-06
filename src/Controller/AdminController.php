@@ -46,8 +46,6 @@ class AdminController extends AbstractController
 
             if ($form->isSubmitted() && $form->isValid()) {
 
-                // TODO: Gérer le temps maximum alloué à un employé
-
                 if (!($overlap = $taskRepository->overlapTask($task))) { // Si un chevauchement d'horaire est détecté
                     if (($time = $taskRepository->howManyHoursThisDay($task)) && $time > 0) { // Compte le nombre d'heure travaillées dans la journée
                         if ($time >= 8) { // Si plus de 8h
