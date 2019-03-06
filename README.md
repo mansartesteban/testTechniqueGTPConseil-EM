@@ -72,4 +72,4 @@ Les comptes employés et les comptes admin ont tous le même mot de passe : _GTP
 - ...
 - admin3@gtp-conseil.com
 
-_Le nombre d'employés et d'admins générés est géré dans src/DataFixtures/BaseFixtures::\_\_construct()\__
+_Le nombre d'employés et d'admins générés est géré dans src/DataFixtures/BaseFixtures::\_\_construct()_
