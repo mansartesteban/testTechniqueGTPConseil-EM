@@ -11,7 +11,8 @@ CDN Utilisés :
 - Bootstrap : 4.0
 - Bootstrap : JS
 - Datatables + bootstrap : 1.10.19
-- Fullcalendar 3.13.0
+- Fullcalendar : 3.13.0
+- Moment : 2.24.0
 
 Versions :
 
