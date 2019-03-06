@@ -69,10 +69,20 @@
     cursor: pointer;
 }
 
+
+a > * {
+    color: white;
+}
+a:hover {
+    text-decoration: none;
+    color: #ddd;
+    font-style: italic;
+}
+
+
 .big-link {
     padding: 1.5em;
     margin: 2em;
-    background: lightblue;
     color: white;
     font-size: 2em;
     box-shadow: 0 0 35px -10px rgba(0, 0, 0, 0.08);
@@ -82,8 +92,9 @@
     margin-top: .8em;
 }
 
-a:hover {
-    text-decoration: none;
-    color: #ddd;
-    font-style: italic;
+
+
+/* Event fullcalendar */
+.fc-event {
+    cursor: pointer;
 }

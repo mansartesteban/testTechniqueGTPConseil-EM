@@ -9,17 +9,33 @@ security:
     # https://symfony.com/doc/current/security.html#where-do-users-come-from-user-providers
     providers:
         # used to reload user from session & other features (e.g. switch_user)
-        app_user_provider:
+        all_users:
+            chain:
+                providers: [admins, employees]
+
+        admins:
+            entity:
+                class: App\Entity\User
+                property: email
+        employees:
             entity:
                 class: App\Entity\Employee
                 property: email
+
         # used to reload user from session & other features (e.g. switch_user)
     firewalls:
         dev:
             pattern: ^/(_(profiler|wdt)|css|images|js)/
             security: false
         main:
+            provider: all_users
             anonymous: true
+            guard:
+                authenticators:
+                    - App\Security\LoginFormAuthenticator
+            logout:
+                path: logout
+            access_denied_handler: App\Security\AccessDeniedHandler
 
             # activate different ways to authenticate
 
