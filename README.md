@@ -34,7 +34,7 @@ DATABASE_URL=mysql://root:""@127.0.0.1:3306/testGTPConseil-EstebanMANSART
 
 Le fichier étant configuré, nous allons pouvoir créer la base de données et la remplir de fausses données (faker :heart: !)
 
-Lancez successivement ces ligne de commande dans votre interpréteur de commande préféré (tout en veillant à bien être situé dans le projet en question).
+Lancez successivement ces lignes de commandes dans votre interpréteur de commande préféré (tout en veillant à bien être situé dans le répertoire dunprojet en question).
 
 
 <pre>
