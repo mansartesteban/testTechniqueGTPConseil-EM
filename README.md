@@ -23,7 +23,7 @@ Pour installer le projet sur votre machine, vous aurez besoin de fork ce reposit
 
 :warning: Pensez à bien cloner le projet dans votre serveur web préféré (docker, homestead, apache, nginx ...) configuré avec les versions précedemment citées de PHP et SQL.
 
-Une fois le projet installé, pour la mise en place de la base de données, vous aurez besoin de configurer le fichier .env situé à la racine de votre projet avec la ligne suivante (le choix du nom de la base de données vous reviens)
+Une fois le projet installé, pour la mise en place de la base de données, vous aurez besoin de configurer le fichier .env situé à la racine de votre projet avec la ligne suivante (le choix du nom de la base de données vous revient)
 
 `
 ...
