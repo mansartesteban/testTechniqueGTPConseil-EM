@@ -22,6 +22,10 @@
                     <td>{{ task.endAt ? task.endAt|date('Y-m-d H:i:s') : '' }}</td>
                 </tr>
                 <tr>
+                    <th>Employe</th>
+                    <td>{{ task.employee }}</td>
+                </tr>
+                <tr>
                     <th>Accompli</th>
                     <td>
                         <span class="badge {{ task.done ? 'badge-success' : 'badge-danger' }}">
