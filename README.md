@@ -16,8 +16,8 @@ CDN Utilisés :
 
 Versions :
 
-- PHP  : 7.3.2
-- mysql : 5.7.24
+- PHP  : 7.3.2 [Windows](https://windows.php.net/download#php-7.3) [Other OS](http://php.net/get/php-7.3.2.tar.gz/from/a/mirror)
+- mysqld : 5.7.24 [Any support](https://dev.mysql.com/downloads/mysql/5.7.html)
 
 # Mise en place du projet :
 
