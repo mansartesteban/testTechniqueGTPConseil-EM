@@ -122,12 +122,25 @@ class AdminController extends AbstractController
             $request->request->set("task", $tmpTask);
             $form->handleRequest($request);
 
-            if (!($overlap = $taskRepository->overlapTask($task))) { // Si un chevauchement d'horaire est détecté
-                if (($time = $taskRepository->howManyHoursThisDay($task)) && $time > 0) { // Compte le nombre d'heure travaillées dans la journée
-                    if ($time >= 8) { // Si plus de 8h
-                        $moreErrors = "L'employé a déjà atteint ses 8h de travail pour ajourd'hui";
-                    } else if ($time + $task->getStartAt()->diff($task->getEndAt())->h > 8) { // Si la tâche qu'on lui ajoute fait dépasser la limite des 8h
-                        $moreErrors = "La tâche que vous êtes sur le point d'ajouter va dépasser la limite de temps de travail pour cet employé";
+            if ($task->getEndAt() > $task->getStartAt()) { //Echange le début et la fin si le début est plus petit que la fin
+                $tmp = $task->getStartAt();
+                $task->setStartAt($task->getEndAt());
+                $task->setEndAt($tmp);
+            }
+
+            if ($task->getStartAt() != $task->getEndAt()) {
+                if (!($overlap = $taskRepository->overlapTask($task))) { // Si un chevauchement d'horaire est détecté
+                    if (($time = $taskRepository->howManyHoursThisDay($task)) && $time > 0) { // Compte le nombre d'heure travaillées dans la journée
+                        if ($time >= 8) { // Si plus de 8h
+                            $moreErrors = "L'employé a déjà atteint ses 8h de travail pour ajourd'hui";
+                        } else if ($time + $task->getStartAt()->diff($task->getEndAt())->h > 8) { // Si la tâche qu'on lui ajoute fait dépasser la limite des 8h
+                            $moreErrors = "La tâche que vous êtes sur le point d'ajouter va dépasser la limite de temps de travail pour cet employé";
+                        } else {
+                            $entityManager = $this->getDoctrine()->getManager();
+                            $entityManager->persist($task);
+                            $entityManager->flush();
+                            return $this->redirectToRoute("admin_task", ["id" => $task->getId()]);
+                        }
                     } else {
                         $entityManager = $this->getDoctrine()->getManager();
                         $entityManager->persist($task);
@@ -135,18 +148,16 @@ class AdminController extends AbstractController
                         return $this->redirectToRoute("admin_task", ["id" => $task->getId()]);
                     }
                 } else {
-                    $entityManager = $this->getDoctrine()->getManager();
-                    $entityManager->persist($task);
-                    $entityManager->flush();
-                    return $this->redirectToRoute("admin_task", ["id" => $task->getId()]);
+                    $overlap = $overlap[0];
+                    $moreErrors = "Chevauchement avec tâche "
+                        . $overlap->getId() . " (" . $overlap->getStartAt()->format("d/m/Y H:i")
+                        . " - " . $overlap->getEndAt()->format("d/m/Y H:i") . ")";
+
                 }
             } else {
-                $overlap = $overlap[0];
-                $moreErrors = "Chevauchement avec tâche "
-                    . $overlap->getId() . " (" . $overlap->getStartAt()->format("d/m/Y H:i")
-                    . " - " . $overlap->getEndAt()->format("d/m/Y H:i") . ")";
-
-            }        }
+                $moreErrors = "La tâche que vous souhaitez ajouter à une durée nulle.";
+            }
+        }
 
         return ($this->render("admin/edit.html.twig", [
             "form" => $form->createView(),
