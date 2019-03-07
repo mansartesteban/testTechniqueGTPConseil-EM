@@ -7,15 +7,17 @@ testTechniqueGTPConseil-EM consiste en une application à plusieurs interfaces v
 Connexion internet
 CDN Utilisés :
 
-- JQuery : 3.3.1
-- Bootstrap : 4.0
-- Bootstrap : JS
-- Datatables + bootstrap : 1.10.19
+- JQuery : 3.3.1 [Downloads](http://jquery.com/download/)
+- Bootstrap : 4.3 [Downloads](https://getbootstrap.com/docs/4.3/getting-started/download/)
+- Datatables + bootstrap : 1.10.19 [Downloads](https://datatables.net/download/)
+- Fullcalendar : 3.13.0 [Downloads](https://fullcalendar.io/download)
+- Moment : 2.24.0 [Downloads](http://momentjs.com/)
 
 Versions :
 
-- PHP  : 7.3.2
-- mysql : 5.7.24
+- PHP  : 7.3.2 [(Windows)](https://windows.php.net/download#php-7.3) [(Other OS)](http://php.net/get/php-7.3.2.tar.gz/from/a/mirror)
+- mysqld : 5.7.24 [(Any support)](https://dev.mysql.com/downloads/mysql/5.7.html)
+- Symfony : 4.2.3 [Install doc](https://symfony.com/doc/current/setup.html)
 
 # Mise en place du projet :
 
@@ -32,10 +34,13 @@ DATABASE_URL=mysql://root:""@127.0.0.1:3306/testGTPConseil-EstebanMANSART
 
 Le fichier étant configuré, nous allons pouvoir créer la base de données et la remplir de fausses données (faker :heart: !)
 
-Lancez successivement ces ligne de commande dans votre interpréteur de commande préféré (tout en veillant à bien être situé dans le projet en question).
+Lancez successivement ces lignes de commandes dans votre interpréteur de commande préféré (tout en veillant à bien être situé dans le répertoire dunprojet en question).
 
 
 <pre>
+// Installation des dépendances via composer
+composer install
+
 // Création de la base de données vide
 php bin/console doctrine:database:create
 
@@ -70,4 +75,4 @@ Les comptes employés et les comptes admin ont tous le même mot de passe : _GTP
 - ...
 - admin3@gtp-conseil.com
 
-_Le nombre d'employés et d'admins générés est géré dans src/DataFixtures/BaseFixtures::\_\_construct()\__
+_Le nombre d'employés et d'admins générés est géré dans src/DataFixtures/BaseFixtures::\_\_construct()_
