@@ -2,7 +2,7 @@
 
 testTechniqueGTPConseil-EM consiste en une application à plusieurs interfaces visuelles pour la gestion des tâches *employés*
 
-# Requirements
+# Pré-requis
 
 Connexion internet
 CDN Utilisés :
