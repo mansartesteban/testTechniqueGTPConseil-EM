@@ -63,16 +63,16 @@ And that's it ! :scream:
 Les comptes employés et les comptes admin ont tous le même mot de passe : _GTPConseil12345_
 *Login des comptes employés :*
 
-- emp0@gtp-conseil.com
-- emp1@gtp-conseil.com
+- emp0@gtp-conseil.fr
+- emp1@gtp-conseil.fr
 - ...
-- emp8@gtp-conseil.com
+- emp8@gtp-conseil.fr
 
 *Login des admins :*
 
-- admin0@gtp-conseil.com
-- admin1@gtp-conseil.com
+- admin0@gtp-conseil.fr
+- admin1@gtp-conseil.fr
 - ...
-- admin3@gtp-conseil.com
+- admin3@gtp-conseil.fr
 
 _Le nombre d'employés et d'admins générés est géré dans src/DataFixtures/BaseFixtures::\_\_construct()_
