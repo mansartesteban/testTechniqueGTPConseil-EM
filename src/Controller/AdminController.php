@@ -75,9 +75,6 @@ class AdminController extends AbstractController
                 }
             }
         }
-//        $form->setData(["start_at" => $form->getViewData()->getStartAt()->format("Y-m-d H:i:s")]);
-//        $form->setData(["end_at" => $form->getViewData()->getEndAt()->format("Y-m-d H:i:s")]);
-//        dump($form);
         return ($this->render("admin/newTask.html.twig", [
             "task" => $task,
             "form" => $form->createView(),
