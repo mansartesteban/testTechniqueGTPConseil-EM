@@ -5,7 +5,9 @@
         {{ form_row(form._token) }} <!-- CSRF -->
         {% if moreError is not empty %}<span class="alert alert-danger">{{ moreError }}</span>{% endif %}
         <div class="form-group mt-4">
-            <div class="alert alert-danger no-list-style">{{ form_errors(form.label) }}</div>
+            {% if form.vars.valid == false %}
+                <div class="alert alert-danger no-list-style">{{ form_errors(form.label) }}</div>
+            {% endif %}
             {{ form_widget(form.label) }}
         </div>
         <div class="form-group">

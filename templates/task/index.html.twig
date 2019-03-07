@@ -17,7 +17,7 @@
             {% for task in tasks %}
                 <tr onclick="location.href='{{ path('admin_edit', {id: task.id}) }}'" style="background-color: {{ task.employee.color }}">
 
-                    <td>{{ task.label }}</td>
+                    <td><div style="max-width:750px;word-break: break-all;">{{ task.label }}</div></td>
                     <td>{{ task.employee.email }}</td>
                     <td>{{ task.startAt ? task.startAt|localizeddate("medium", "short", "fr_FR") : '' }}</td>
                     <td>{{ task.endAt ? task.endAt|localizeddate("medium", "short", "fr_FR") : '' }}</td>
