@@ -19,6 +19,7 @@ function calendarThis(json) {
                             alert("La tâche a été marquée à \"Terminé\"");
                             // location.href = "#"
                             calEvent.done = true;
+                            calEvent.color = "green";
                             $('#employeeCalendar').fullCalendar('updateEvent', calEvent);
                         } else {
                             alert(json.error);

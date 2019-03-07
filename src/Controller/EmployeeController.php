@@ -82,7 +82,8 @@ class EmployeeController extends AbstractController
                 "title" => $task->getLabel(),
                 "start" => $task->getStartAt(),
                 "end" => $task->getEndAt(),
-                "done" => $task->getDone()
+                "done" => $task->getDone(),
+                "color" => $task->getDone() ? "green" : "red"
             ];
         }
         return $this->json($ret);
