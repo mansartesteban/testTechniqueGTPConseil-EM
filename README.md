@@ -7,17 +7,17 @@ testTechniqueGTPConseil-EM consiste en une application à plusieurs interfaces v
 Connexion internet
 CDN Utilisés :
 
-- JQuery : 3.3.1
-- Bootstrap : 4.0
-- Bootstrap : JS
-- Datatables + bootstrap : 1.10.19
-- Fullcalendar : 3.13.0
-- Moment : 2.24.0
+- JQuery : 3.3.1 [Downloads](http://jquery.com/download/)
+- Bootstrap : 4.3 [Downloads](https://getbootstrap.com/docs/4.3/getting-started/download/)
+- Datatables + bootstrap : 1.10.19 [Downloads](https://datatables.net/download/)
+- Fullcalendar : 3.13.0 [Downloads](https://fullcalendar.io/download)
+- Moment : 2.24.0 [Downloads](http://momentjs.com/)
 
 Versions :
 
 - PHP  : 7.3.2 [(Windows)](https://windows.php.net/download#php-7.3) [(Other OS)](http://php.net/get/php-7.3.2.tar.gz/from/a/mirror)
 - mysqld : 5.7.24 [(Any support)](https://dev.mysql.com/downloads/mysql/5.7.html)
+- Symfony : 4.2.3 [Install doc](https://symfony.com/doc/current/setup.html)
 
 # Mise en place du projet :
 
