@@ -5,6 +5,7 @@
 /.env.*.local
 /public/bundles/
 /var/
+/src/Migrations/
 /vendor/
 ###< symfony/framework-bundle ###
 
