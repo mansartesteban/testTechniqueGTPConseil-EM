@@ -1,5 +1,5 @@
  <div class="d-flex flex-column justify-content-center align-items-center">
-    <h1>Create new Task</h1>
+    <h1>Créer une nouvelle tâche</h1>
     <div class="form-container w-50 p-4 rounded">
         {{ form_start(form) }}
         {{ form_row(form._token) }} <!-- CSRF -->
@@ -46,11 +46,11 @@
             {{ form_row(form.created_by) }}
         </div>
 
-        <button class="btn btn-success">{{ button_label|default('Save') }}</button>
+        <button class="btn btn-success">{{ button_label|default('Créer') }}</button>
 
         {{ form_end(form, { "render_rest": false }) }}
     </div>
 </div>
 
-<a href="{{ path('admin_list') }}">back to list</a>
+<a href="{{ path('admin_list') }}">Revenir à la liste</a>
 
