@@ -1,8 +1,8 @@
 <div class="d-flex flex-row justify-content-center pt-4">
     <div class="d-flex flex-column align-items-center">
 
-        <h1 class="align-self-start">Task index</h1>
-
+        <h1 class="align-self-start">Liste des tâches</h1>
+        <a href="{{ path('admin_create') }}" class="btn btn-success align-self-start">Créer une tâche</a>
         <table class="table">
             <thead>
                 <tr>
@@ -29,13 +29,11 @@
                 </tr>
             {% else %}
                 <tr>
-                    <td colspan="6">no records found</td>
+                    <td colspan="6">Aucun enregistrement trouvé.</td>
                 </tr>
             {% endfor %}
             </tbody>
         </table>
-
-        <a href="{{ path('admin_create') }}" class="btn btn-success align-self-start">Create new</a>
 
     </div>
 </div>
