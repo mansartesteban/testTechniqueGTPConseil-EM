@@ -7,7 +7,7 @@
 {% endblock %}
 
 {% block body %}
-    <div id="employeeCalendar" data-employeeId="{{ employeeId ?? "0" }}"></div>
+    <div id="employeeCalendar" data-employeeId="{{ app.user.id ?? "0" }}"></div>
 {% endblock %}
 
 {% block javascripts %}

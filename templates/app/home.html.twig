@@ -4,7 +4,6 @@
 
 {% block body %}
     <div class="d-flex flex-row justify-content-center align-items-center h-100">
-        {% if is_granted("ROLE_ADMIN") or app.user is null %}
         <a href="{{ path("admin_create") }}">
             <div class="d-flex flex-column align-items-center big-link bg-info">
                 {% if is_granted("ROLE_ADMIN") %}
@@ -13,15 +12,13 @@
                     </span>
                 {% else %}
                     <span class="badge badge-danger">
-                        Non autorisé (Connexion requise)
+                        Non autorisé (Connexion requise : ADMIN)
                     </span>
                 {% endif %}
                 <img src="http://lorempixel.com/350/200" alt="image lien 1"/>
                 <span>Créer une tâche</span>
             </div>
         </a>
-        {% endif %}
-        {% if is_granted("ROLE_ADMIN") or app.user is null %}
         <a href="{{ path("admin_list") }}">
             <div class="d-flex flex-column align-items-center big-link bg-info">
                 {% if is_granted("ROLE_ADMIN") %}
@@ -30,15 +27,13 @@
                     </span>
                 {% else %}
                     <span class="badge badge-danger">
-                        Non autorisé (Connexion requise)
+                        Non autorisé (Connexion requise : ADMIN)
                     </span>
                 {% endif %}
                 <img src="http://lorempixel.com/350/200" alt="image lien 1"/>
                 <span>Admin panel</span>
             </div>
         </a>
-        {% endif %}
-        {% if is_granted("ROLE_EMPLOYEE") or app.user is null %}
         <a href="{{ path("employee") }}">
             <div class="d-flex flex-column align-items-center big-link bg-info">
                 {% if is_granted("ROLE_EMPLOYEE") %}
@@ -47,13 +42,12 @@
                     </span>
                 {% else %}
                     <span class="badge badge-danger">
-                        Non autorisé (Connexion requise)
+                        Non autorisé (Connexion requise : Employé)
                     </span>
                 {% endif %}
                 <img src="http://lorempixel.com/350/200" alt="image lien 1"/>
                 <span>Agenda</span>
             </div>
         </a>
-        {% endif %}
     </div>
 {% endblock %}
