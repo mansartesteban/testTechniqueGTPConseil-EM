@@ -38,6 +38,9 @@ Lancez successivement ces lignes de commandes dans votre interpréteur de comman
 
 
 <pre>
+// Installation des dépendances via composer
+composer install
+
 // Création de la base de données vide
 php bin/console doctrine:database:create
 
