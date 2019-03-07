@@ -6,6 +6,7 @@ use App\Entity\Task;
 use App\Form\TaskType;
 use App\MyVendor\MyDateTime;
 use App\Repository\TaskRepository;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -13,6 +14,7 @@ use Symfony\Component\Routing\Annotation\Route;
 
 /**
  * @Route("/admin")
+ * @IsGranted("ROLE_ADMIN")
  */
 class AdminController extends AbstractController
 {
@@ -124,18 +126,30 @@ class AdminController extends AbstractController
             $form->handleRequest($request);
 
             if (!($overlap = $taskRepository->overlapTask($task))) { // Si un chevauchement d'horaire est détecté
-                $entityManager = $this->getDoctrine()->getManager();
-                $entityManager->persist($task);
-                $entityManager->flush();
-                return $this->redirectToRoute("admin_task", ["id" => $task->getId()]);
+                if (($time = $taskRepository->howManyHoursThisDay($task)) && $time > 0) { // Compte le nombre d'heure travaillées dans la journée
+                    if ($time >= 8) { // Si plus de 8h
+                        $moreErrors = "L'employé a déjà atteint ses 8h de travail pour ajourd'hui";
+                    } else if ($time + $task->getStartAt()->diff($task->getEndAt())->h > 8) { // Si la tâche qu'on lui ajoute fait dépasser la limite des 8h
+                        $moreErrors = "La tâche que vous êtes sur le point d'ajouter va dépasser la limite de temps de travail pour cet employé";
+                    } else {
+                        $entityManager = $this->getDoctrine()->getManager();
+                        $entityManager->persist($task);
+                        $entityManager->flush();
+                        return $this->redirectToRoute("admin_task", ["id" => $task->getId()]);
+                    }
+                } else {
+                    $entityManager = $this->getDoctrine()->getManager();
+                    $entityManager->persist($task);
+                    $entityManager->flush();
+                    return $this->redirectToRoute("admin_task", ["id" => $task->getId()]);
+                }
             } else {
                 $overlap = $overlap[0];
                 $moreErrors = "Chevauchement avec tâche "
                     . $overlap->getId() . " (" . $overlap->getStartAt()->format("d/m/Y H:i")
                     . " - " . $overlap->getEndAt()->format("d/m/Y H:i") . ")";
 
-            }
-        }
+            }        }
 
         return ($this->render("admin/edit.html.twig", [
             "form" => $form->createView(),

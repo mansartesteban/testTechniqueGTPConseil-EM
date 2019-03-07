@@ -1,0 +1,19 @@
+{% extends "base.html.twig" %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('styles/fullcalendar.min.css') }}"/>
+    <link rel="stylesheet" href="{{ asset('styles/scheduler.css') }}"/>
+{% endblock %}
+
+{% block body %}
+    <div id="employeeCalendar" data-employeeId="{{ employeeId ?? "0" }}"></div>
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script src="{{ asset('js/moment.js') }}"></script>
+    <script src="{{ asset('js/fullcalendar.min.js') }}"></script>
+    <script src="{{ asset('js/scheduler.min.js') }}"></script>
+    <script src="{{ asset('js/employeeCalendar.js') }}"></script>
+{% endblock %}
