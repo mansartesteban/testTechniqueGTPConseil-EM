@@ -13,7 +13,7 @@ class UserFixture extends BaseFixture
         $this->createMany("User", function () {
             $user = new User();
             $user
-                ->setEmail("esteban@gtp-conseil.com")
+                ->setEmail("esteban@gtp-conseil.fr")
                 ->setPassword("$2y$10$/k3eAc9k7VID8AmJAzhJV.ogJRDWlIGgJXjHseid7fWNMYMD8Y/wa") //GTPConseil12345
                 ->setRoles(["ROLE_ADMIN"]);
             return $user;
@@ -22,7 +22,7 @@ class UserFixture extends BaseFixture
         $this->createMany("User", function ($i) {
             $user = new User();
             $user
-                ->setEmail("admin" . $i ."@gtp-conseil.com")
+                ->setEmail("admin" . $i ."@gtp-conseil.fr")
                 ->setPassword("$2y$10$/k3eAc9k7VID8AmJAzhJV.ogJRDWlIGgJXjHseid7fWNMYMD8Y/wa") //GTPConseil12345
                 ->setRoles(["ROLE_ADMIN"]);
             return $user;
